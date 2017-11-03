@@ -3,7 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="colorPrimaryCortana">#32746D</color>
+    <color name="colorPrimaryCortana">#32746d</color>
     <color name="colorPrimaryDarkCortana">#104F55</color>
-    <color name="colorAccentCortana">#F7FF58</color>
+    <color name="colorAccentCortana">#f7ff58</color>
 </resources>

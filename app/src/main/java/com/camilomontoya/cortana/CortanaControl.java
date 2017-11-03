@@ -17,8 +17,7 @@ import java.util.UUID;
 
 public class CortanaControl extends AppCompatActivity {
 
-    private Button off;
-    private SeekBar intense;
+    private Button off,btnVib;
     private String address = null;
     private ProgressDialog progress;
     private BluetoothAdapter myBlue = null;
@@ -36,12 +35,13 @@ public class CortanaControl extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fan_control);
+        setContentView(R.layout.activity_cortana_control);
 
         Bundle newi = getIntent().getExtras();
         address = newi.getString("EXTRA_ADDRESS");
 
         off = (Button) findViewById(R.id.disconnect);
+        btnVib = (Button) findViewById(R.id.btnSendVib1);
 
         new ConnectBt().execute();
 
@@ -49,6 +49,16 @@ public class CortanaControl extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 turnOff();
+            }
+        });
+        btnVib.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    enviar("VIBF0");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
@@ -115,11 +125,11 @@ public class CortanaControl extends AppCompatActivity {
      * Metodo privado para enviar el mensaje de apagar el sistema de ventilacion
      */
     private void turnOff() {
-        try {
+        /*try {
             enviar("TF");
         } catch (IOException e) {
             aviso("Error de envio");
-        }
+        }*/
 
         if (bSocket != null) {
             try {
